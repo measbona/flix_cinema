@@ -1,0 +1,29 @@
+%h1 show page
+%p
+  - if @cinema.image_file_name.nil?
+    = image_tag('placeholder.png')
+  - else
+    = image_tag(@cinema.image_file_name)
+%h3 
+  = @cinema.title
+%p
+  = @cinema.description
+%p  
+  Rate: #{@cinema.rating}
+%p  
+  Released Date: #{@cinema.released_on}
+%p 
+  Price: $#{@cinema.total_gross}
+%p
+  Cast: #{@cinema.cast}
+%p
+  Director: #{@cinema.director}
+%p
+  Duration: #{@cinema.duration}
+%p
+  = format_average_stars(@cinema)
+= link_to "Edit", edit_cinema_path(@cinema)
+= link_to "Delete", cinema_path(@cinema), method: :delete, data:{ confirm: 'Are your want to delete this Cinema?'}
+= link_to "Cancel", root_path
+= link_to pluralize(@cinema.reviews.size, "Review"),cinema_reviews_path(@cinema)
+= link_to "Write Review ", new_cinema_review_path(@cinema), class: 'button ok reivew'

@@ -1,0 +1,20 @@
+- if @cinema.errors.any?
+  %section#errors
+    %header 
+      %h2
+        Oops ! The #{@cinema.class.name.titleize.downcase}could not be save.
+      %h3 
+        Please correct the following #{pluralize(@cinema.errors.count, "error")}:
+    %ul 
+      - @cinema.errors.full_messages.each do |message|
+        %li=message
+-# - if @review.errors.any?
+-#   %section#errors
+-#     %header 
+-#       %h2
+-#         Oops ! The #{@review.class.name.titleize.downcase}could not be save.
+-#       %h3 
+-#         Please correct the following #{pluralize(@review.errors.count, "error")}:
+-#     %ul 
+-#       - @review.errors.full_messages.each do |message|
+-#         %li=message

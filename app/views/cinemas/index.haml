@@ -1,0 +1,23 @@
+= link_to("All Cinemas",root_path)
+= link_to("Add New Cinema", new_cinema_path)
+%h1 Cinemas
+%ul
+  - @cinemas.each do |cinema|
+    %li
+      %strong
+        = link_to(cinema.title, cinema_path(cinema)) 
+        = "(#{cinema.rating})"
+      %p
+        Description: #{truncate(cinema.description, length: 60, separator: ' ')}
+      %p
+        -# = time_ago_in_words(cinema.released_on)
+        -# ago
+        Released Date : #{cinema.released_on.to_s(:released_date)}
+      %p
+        Price: #{format_total_gross(cinema)}
+      %p 
+        Cast: #{cinema.cast}
+      %p 
+        Director: #{cinema.director}
+      %p 
+        Duration: #{cinema.duration} 

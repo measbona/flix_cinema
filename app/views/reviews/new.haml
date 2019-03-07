@@ -1,0 +1,26 @@
+%header#content-header
+  %h1 
+    = link_to(@cinema.title, @cinema) 
+  = form_for([@cinema, @review]) do |f|
+    = render 'shared/errors', object: @cinema
+    %fieldset
+      %ol
+        %li.required
+          %p 
+            = f.label :name
+          %p
+            = f.text_field :name, size: 40, autofocus: true
+        %li.required_stars
+          %p 
+            = f.label :stars
+          %p
+            = f.select :stars, Review::STARS, prompt: "Pick one"
+        %li.required
+          %p 
+            = f.label :comment
+          %p
+            = f.text_area :comment, col: 80, placeholder: "What do you think?"
+        %p 
+          = f.submit 'Post Review'
+          = link_to "Cancel", @cinema, class: 'button'
+

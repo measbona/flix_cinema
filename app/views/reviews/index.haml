@@ -1,0 +1,12 @@
+%ol#reviews
+  - @reviews.each do |review|
+    %li 
+      %span.review
+        = "#{pluralize(review.stars, 'star')}"
+      %span.user
+        = "#{review.name}"
+      %span.data
+        = time_ago_in_words(review.created_at)
+      = "#{review.comment}"
+= link_to"Back to all Cinema", root_path(@cinema)
+      

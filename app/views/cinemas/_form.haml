@@ -1,0 +1,53 @@
+= form_for(@cinema) do |c|
+  = render 'shared/errors', object: @cinema
+  %fieldset
+    %ol
+      %li
+        %p
+          = c.label :title
+        %p 
+          = c.text_field :title
+      %li
+        %p
+          = c.label :description
+        %p
+          = c.text_area :description, cols: 50, rows: 10
+      %li
+        %p
+          = c.label :rating 
+        %p
+          = c.select :rating, Cinema::RATINGS, prompt:"Pick One"
+      %li
+        %p
+          = c.label :released_on
+        %p
+          = c.date_field :released_on
+      %li
+        %p
+          = c.label :total_gross
+        %p
+          = c.text_field :total_gross
+      %li
+        %p
+          = c.label :cast
+        %p
+          = c.text_field :cast
+      %li
+        %p
+          = c.label :director
+        %p
+          = c.text_field :director
+      %li
+        %p
+          = c.label :duration
+        %p
+          = c.text_field :duration, size: 10
+      %li
+        %p
+          = c.label :image_file_name
+        %p
+          = c.text_field :image_file_name
+  
+      %p
+        = c.submit 
+        = link_to  "Cancel", root_path
